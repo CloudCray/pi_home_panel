@@ -20,12 +20,12 @@ BG_COLOR = (15, 15, 45)
 RECT_COLOR = (45, 45, 90, 150)
 FORECAST_BG_COLOR = (30, 30, 90)
 
-PIC_PATH = "pics\\weather"
+PIC_PATH = "pics/weather"
 
 time_font = pygame.font.SysFont("Arial", int(DISPLAY_SIZE[0] / 10))
 subtime_font = pygame.font.SysFont("Arial", int(DISPLAY_SIZE[0] / 18))
-forecast_head_font = pygame.font.SysFont("Arial", int(GX / 3))
-forecast_temp_font = pygame.font.SysFont("Arial", int(GX / 2))
+forecast_head_font = pygame.font.SysFont("Arial", int(GX / 4))
+forecast_temp_font = pygame.font.SysFont("Arial", int(GX / 3))
 
 class WeatherScreen(pygame.Surface):
     code = None
@@ -73,7 +73,7 @@ class WeatherScreen(pygame.Surface):
         loc = (GX, GY * 3)
         lbl_temp = time_font.render("{0}".format(temp), 1, TEXT_COLOR)
         w = lbl_temp.get_width()
-        lbl_f = forecast_temp_font.render("°F", 1, TEXT_COLOR)
+        lbl_f = forecast_temp_font.render("*F", 1, TEXT_COLOR)
         self.blit(lbl_temp, loc)
         self.blit(lbl_f, (loc[0] + w, int(loc[1]*1.05)))
         
@@ -143,13 +143,13 @@ class ForecastPanel(pygame.Surface):
         self.blit(lbl, (int(GX * 1.0), int(GY * 0.08)))
 
     def draw_high_temp(self):
-        text = "{0} °F".format(str(round(int(self.high) * 1.8 + 32, 1)))
+        text = "{0} *F".format(str(round(int(self.high) * 1.8 + 32, 1)))
         lbl = forecast_temp_font.render(text, 1, TEXT_COLOR)
         w = lbl.get_width()
         self.blit(lbl, (int(GX * 2.4 - w), int(GY * 0.6)))
 
     def draw_low_temp(self):
-        text = "{0} °F".format(str(round(int(self.low) * 1.8 + 32, 1)))
+        text = "{0} *F".format(str(round(int(self.low) * 1.8 + 32, 1)))
         lbl = forecast_head_font.render(text, 1, TEXT_COLOR)
         w = lbl.get_width()
         self.blit(lbl, (int(GX * 2.3 - w), int(GY * 1.2)))
