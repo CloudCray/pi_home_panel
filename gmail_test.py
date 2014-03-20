@@ -15,7 +15,7 @@ rv, data = mail.search(None, "ALL")
 rv, unread = mail.search(None, "UNSEEN")
 unread_ids = unread[0].decode("ascii").split(" ")
 
-#  Only view 5 most recent emails
+#  Only view 4 most recent emails
 for num in data[0].split()[:-5:-1]:
 	resp, msg_data = mail.fetch(num, "(RFC822)")
 	msg = email.message_from_string(msg_data[0][1].decode("ascii"))
